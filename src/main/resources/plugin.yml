@@ -1,0 +1,15 @@
+name: '${project.name}'
+version: '${project.version}'
+main: ru.ggmd.litebansnotify.Main
+api-version: '1.16'
+
+depend: [LiteBans]
+
+commands:
+  litebansnotify:
+    permission: litebansnotify.admin
+
+permissions:
+  litebansnotify.admin:
+    description: Админские права для управления плагином
+    default: op
