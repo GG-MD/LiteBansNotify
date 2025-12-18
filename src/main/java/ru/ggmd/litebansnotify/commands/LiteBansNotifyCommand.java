@@ -102,8 +102,8 @@ public class LiteBansNotifyCommand implements CommandExecutor, TabCompleter {
                 }
 
                 String downloadUrl = String.format(
-                        "https://github.com/GG-MD/LiteBansNotify/releases/download/%s/LiteBansNotify-%s.jar",
-                        latestVersion, latestVersion
+                        "https://github.com/GG-MD/LiteBansNotify/releases/download/%s/LiteBansNotify.jar",
+                        latestVersion
                 );
 
                 File updateFolder = new File("plugins/update");
@@ -111,7 +111,7 @@ public class LiteBansNotifyCommand implements CommandExecutor, TabCompleter {
                     updateFolder.mkdirs();
                 }
 
-                File targetFile = new File(updateFolder, "LiteBansNotify-" + latestVersion + ".jar");
+                File targetFile = new File(updateFolder, "LiteBansNotify.jar");
 
                 sender.sendMessage(ChatColor.YELLOW + "Загрузка версии " + latestVersion + "...");
                 downloadFile(downloadUrl, targetFile);
