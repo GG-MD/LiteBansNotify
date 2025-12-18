@@ -7,6 +7,7 @@ import ru.ggmd.litebansnotify.config.LiteBansNotifyConfig;
 import ru.ggmd.litebansnotify.listeners.LiteBansListener;
 import ru.ggmd.litebansnotify.managers.TelegramManager;
 import ru.ggmd.litebansnotify.utils.MessageFormatter;
+import ru.ggmd.litebansnotify.utils.Utils;
 
 @Getter
 public final class Main extends JavaPlugin {
@@ -29,6 +30,7 @@ public final class Main extends JavaPlugin {
         initializeComponents();
         registerListener();
         registerCommand();
+        checkForUpdates();
 
         getLogger().info(getName() + " успешно запущен!");
     }
@@ -72,5 +74,21 @@ public final class Main extends JavaPlugin {
         registerListener();
 
         getLogger().info("Конфигурация перезагружена!");
+    }
+
+    public void checkForUpdates() {
+        Utils.checkUpdates(this, version -> {
+            getLogger().info("§6========================================");
+            if (getDescription().getVersion().equals(version)) {
+                getLogger().info("§aВы используете последнюю версию плагина!");
+            } else {
+                getLogger().info("§aВы используете устаревшую версию плагина!");
+                getLogger().info("§aВы можете скачать новую версию здесь:");
+                getLogger().info("§bhttps://github.com/GG-MD/LiteBansNotify/releases/");
+                getLogger().info("");
+                getLogger().info("§aИли обновите плагин при помощи §b/litebansnotify update");
+            }
+            getLogger().info("§6========================================");
+        });
     }
 }
